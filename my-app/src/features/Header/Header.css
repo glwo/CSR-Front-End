@@ -1,5 +1,20 @@
 .ampHeader {
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 1.5vw;
+}
+
+.options-button button {
+  background-color: white;
+  color: #c65e31;
+  padding: 8px 16px;
+  border: solid #c65e31;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.options-button button:hover {
+  background-color: #c65e31;
+  color: white;
 }

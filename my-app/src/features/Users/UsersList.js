@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import EditAccount from '../EditAccount';
+import { selectUser, updateUser } from './usersSlice';
+import VehicleSubscriptions from '../VehicleSubscriptions';
 
 const UserList = () => {
   const users = useSelector((state) => state.users.users);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const selectedUser = useSelector((state) => state.users.selectedUser);
+  const dispatch = useDispatch();
 
-  const handleUserClick = (userId) => {
-    setSelectedUserId(userId);
+  const handleUserClick = (user) => {
+    dispatch(selectUser(user));
+  };
+
+  const handleSaveAccount = (updatedUser) => {
+    dispatch(updateUser(updatedUser));
   };
 
   return (
     <div>
       <h2>User List</h2>
       {users.map((user) => (
-        <div key={user.id} onClick={() => handleUserClick(user.id)}>
+        <div key={user.id} onClick={() => handleUserClick(user)}>
           <h3>{user.name}</h3>
           <p>Email: {user.email}</p>
           <p>Phone Number: {user.phoneNumber}</p>
-          {selectedUserId === user.id && (
+          {selectedUser?.id === user.id && (
             <>
+              <EditAccount user={user} onSave={handleSaveAccount} />
+              <VehicleSubscriptions user={user} users={users} />
               <p>Subscriptions:</p>
               <ul>
                 {user.subscriptions.map((subscription) => (
