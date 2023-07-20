@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../Users/usersSlice';
-import "./VehicleSubscriptionsModal.css"
+
+import './VehicleSubscriptionsModal.css';
 
 const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   const [selectedSubscription, setSelectedSubscription] = useState(null);
@@ -9,6 +10,13 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   const [newStatus, setNewStatus] = useState('');
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Update the local state whenever the user prop changes
+    if (user) {
+      setSelectedSubscription(null); // Reset selected subscription when the modal is opened
+    }
+  }, [user]);
 
   const handleSubscriptionClick = (subscription) => {
     setSelectedSubscription(subscription);
@@ -65,6 +73,10 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
     setSelectedSubscription(null);
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -80,6 +92,26 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
             </li>
           ))}
         </ul>
+
+        {selectedSubscription === null && (
+          <div>
+            <h4>Add Subscription</h4>
+            <input
+              type="text"
+              placeholder="Vehicle"
+              value={newVehicle}
+              onChange={(e) => setNewVehicle(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Status"
+              value={newStatus}
+              onChange={(e) => setNewStatus(e.target.value)}
+            />
+            <button onClick={handleAddSubscription}>Add Subscription</button>
+          </div>
+        )}
+
         {selectedSubscription && (
           <>
             <div>
@@ -89,22 +121,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
               <button onClick={() => handleRemoveSubscription(selectedSubscription.id)}>
                 Remove Subscription
               </button>
-            </div>
-            <div>
-              <h4>Add Subscription</h4>
-              <input
-                type="text"
-                placeholder="Vehicle"
-                value={newVehicle}
-                onChange={(e) => setNewVehicle(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Status"
-                value={newStatus}
-                onChange={(e) => setNewStatus(e.target.value)}
-              />
-              <button onClick={handleAddSubscription}>Add Subscription</button>
             </div>
             <div>
               <h4>Transfer Subscription</h4>
@@ -131,6 +147,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
             </div>
           </>
         )}
+
         <button onClick={onClose}>Close</button>
       </div>
     </div>
@@ -138,3 +155,4 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
 };
 
 export default VehicleSubscriptionsModal;
+

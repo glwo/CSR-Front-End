@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import "./EditAccountModal.css"
+import React, { useState, useEffect } from 'react';
+import './EditAccountModal.css';
 
 const EditAccountModal = ({ user, onSave, onClose }) => {
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
-  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  useEffect(() => {
+    // Update the local state whenever the selectedUser prop changes
+    if (user) {
+      setName(user.name);
+      setEmail(user.email);
+      setPhoneNumber(user.phoneNumber);
+    }
+  }, [user]);
 
   const handleSave = () => {
     const updatedUser = {
@@ -15,6 +24,11 @@ const EditAccountModal = ({ user, onSave, onClose }) => {
     };
     onSave(updatedUser);
   };
+
+  // If user is not available, return null to prevent rendering the modal
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="modal-overlay">
@@ -48,3 +62,4 @@ const EditAccountModal = ({ user, onSave, onClose }) => {
 };
 
 export default EditAccountModal;
+
