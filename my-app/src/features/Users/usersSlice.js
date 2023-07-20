@@ -87,7 +87,211 @@ const initialState = {
         },
       ],
     },
-    // Other users...
+    // Additional 15 users...
+    {
+      id: 6,
+      name: 'Michael Johnson',
+      email: 'michaeljohnson@example.com',
+      phoneNumber: '111-222-3333',
+      subscriptions: [
+        {
+          id: 5,
+          vehicle: 'Car C',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [
+        {
+          id: 4,
+          date: '2023-07-04',
+          amount: 12.99,
+        },
+      ],
+    },
+    {
+      id: 7,
+      name: 'Sophia Lee',
+      email: 'sophialee@example.com',
+      phoneNumber: '444-555-6666',
+      subscriptions: [],
+      purchaseHistory: [
+        {
+          id: 5,
+          date: '2023-07-05',
+          amount: 8.99,
+        },
+      ],
+    },
+    {
+      id: 8,
+      name: 'William Davis',
+      email: 'williamdavis@example.com',
+      phoneNumber: '777-888-9999',
+      subscriptions: [
+        {
+          id: 6,
+          vehicle: 'Truck B',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [],
+    },
+    {
+      id: 9,
+      name: 'Olivia Martinez',
+      email: 'oliviamartinez@example.com',
+      phoneNumber: '111-222-3333',
+      subscriptions: [],
+      purchaseHistory: [],
+    },
+    {
+      id: 10,
+      name: 'James Taylor',
+      email: 'jamestaylor@example.com',
+      phoneNumber: '444-555-6666',
+      subscriptions: [],
+      purchaseHistory: [],
+    },
+    {
+      id: 11,
+      name: 'Emma Clark',
+      email: 'emmaclark@example.com',
+      phoneNumber: '777-888-9999',
+      subscriptions: [
+        {
+          id: 7,
+          vehicle: 'Car D',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [],
+    },
+    {
+      id: 12,
+      name: 'Liam Lewis',
+      email: 'liamlewis@example.com',
+      phoneNumber: '111-222-3333',
+      subscriptions: [
+        {
+          id: 8,
+          vehicle: 'Motorcycle B',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [
+        {
+          id: 6,
+          date: '2023-07-06',
+          amount: 9.99,
+        },
+      ],
+    },
+    {
+      id: 13,
+      name: 'Ava Adams',
+      email: 'avaadams@example.com',
+      phoneNumber: '444-555-6666',
+      subscriptions: [],
+      purchaseHistory: [],
+    },
+    {
+      id: 14,
+      name: 'Noah Wright',
+      email: 'noahwright@example.com',
+      phoneNumber: '777-888-9999',
+      subscriptions: [
+        {
+          id: 9,
+          vehicle: 'Car E',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [
+        {
+          id: 7,
+          date: '2023-07-07',
+          amount: 15.99,
+        },
+      ],
+    },
+    {
+      id: 15,
+      name: 'Isabella Hill',
+      email: 'isabellahill@example.com',
+      phoneNumber: '111-222-3333',
+      subscriptions: [],
+      purchaseHistory: [],
+    },
+    {
+      id: 16,
+      name: 'Mason Turner',
+      email: 'masonturner@example.com',
+      phoneNumber: '444-555-6666',
+      subscriptions: [
+        {
+          id: 10,
+          vehicle: 'Truck C',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [
+        {
+          id: 8,
+          date: '2023-07-08',
+          amount: 11.99,
+        },
+      ],
+    },
+    {
+      id: 17,
+      name: 'Ella Hernandez',
+      email: 'ellahernandez@example.com',
+      phoneNumber: '777-888-9999',
+      subscriptions: [],
+      purchaseHistory: [],
+    },
+    {
+      id: 18,
+      name: 'Elijah Moore',
+      email: 'elijahmoore@example.com',
+      phoneNumber: '111-222-3333',
+      subscriptions: [
+        {
+          id: 11,
+          vehicle: 'Car F',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [],
+    },
+    {
+      id: 19,
+      name: 'Avery Parker',
+      email: 'averyparker@example.com',
+      phoneNumber: '444-555-6666',
+      subscriptions: [
+        {
+          id: 12,
+          vehicle: 'Motorcycle C',
+          status: 'active',
+        },
+      ],
+      purchaseHistory: [],
+    },
+    {
+      id: 20,
+      name: 'Mia Simmons',
+      email: 'miasimmons@example.com',
+      phoneNumber: '777-888-9999',
+      subscriptions: [],
+      purchaseHistory: [
+        {
+          id: 9,
+          date: '2023-07-09',
+          amount: 13.99,
+        },
+      ],
+    },
   ],
   selectedUser: null,
 };
