@@ -16,6 +16,7 @@
   border: solid #c65e31;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
+  font-weight: bolder;
 }
 
 .options-button button:hover {

@@ -96,19 +96,26 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
         {selectedSubscription === null && (
           <div>
             <h4>Add Subscription</h4>
+            <label> Vehicle:
             <input
               type="text"
               placeholder="Vehicle"
               value={newVehicle}
               onChange={(e) => setNewVehicle(e.target.value)}
             />
+            </label>
+            <label> Subsciption Status:
             <input
               type="text"
               placeholder="Status"
               value={newStatus}
               onChange={(e) => setNewStatus(e.target.value)}
             />
-            <button onClick={handleAddSubscription}>Add Subscription</button>
+            </label>
+            <div className="modal-buttons">
+              <button onClick={handleAddSubscription}>Add Subscription</button>
+              <button onClick={onClose}>Close</button>
+            </div>
           </div>
         )}
 
@@ -118,9 +125,12 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
               <h4>Edit Subscription</h4>
               <p>Vehicle: {selectedSubscription.vehicle}</p>
               <p>Status: {selectedSubscription.status}</p>
+              <div className="modal-buttons">
               <button onClick={() => handleRemoveSubscription(selectedSubscription.id)}>
                 Remove Subscription
               </button>
+              <button onClick={onClose}>Close</button>
+            </div>
             </div>
             <div>
               <h4>Transfer Subscription</h4>
@@ -148,11 +158,10 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
           </>
         )}
 
-        <button onClick={onClose}>Close</button>
+        {/* <button onClick={onClose}>Close</button> */}
       </div>
     </div>
   );
 };
 
 export default VehicleSubscriptionsModal;
-
