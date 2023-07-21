@@ -1,0 +1,24 @@
+.footer-container {
+    background-color: #262626; /* Dark background color for the footer */
+    color: #fff; /* Text color for the footer */
+    padding: 20px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 800px; /* Limit the width of the content within the footer */
+    margin: 0 auto; /* Center the content horizontally within the footer */
+    align-items: center;
+    /* text-align: center; */
+  }
+
+  /* Style the individual lines of text within the footer */
+  .footer-content p {
+    margin: 5px;
+  }
+
+  .footer-content a {
+    color: white;
+    text-decoration: none;
+  }

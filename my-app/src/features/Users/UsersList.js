@@ -82,51 +82,55 @@ const UserList = () => {
             style={{ height: expandedCard === user.id ? calculateCardHeight(user) : '15vh' }}
           >
             {selectedUser?.id === user.id ? (
-              <>
-                <div className="user-details">
-                  <h3>{user.name}</h3>
-                  <p>Email: {user.email}</p>
-                  <p>Phone Number: {user.phoneNumber}</p>
-                  {user.subscriptions.length > 0 ? (
-                    <>
-                      <p>Subscriptions:</p>
-                      <ul className="no-bullets"> {/* Add the "no-bullets" class to hide bullet points */}
-                        {user.subscriptions.map((subscription) => (
-                          <li key={subscription.id}>
-                            Vehicle: {subscription.vehicle}, Status: {subscription.status}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <><p>Subscriptions:</p><p>User does not have any subscriptions.</p></>
-                  )}
-                  {user.purchaseHistory.length > 0 ? (
-                    <>
-                      <p>Purchase History:</p>
-                      <ul className="no-bullets"> {/* Add the "no-bullets" class to hide bullet points */}
-                        {user.purchaseHistory.map((purchase) => (
-                          <li key={purchase.id}>
-                            Date: {purchase.date}, Amount: {purchase.amount}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <><p>Purchase History:</p><p>User has not made any purchases.</p></>
-                  )}
-                </div>
+              <div className="user-details">
+                <h3>{user.name}</h3>
+                <p>Email: {user.email}</p>
+                <p>Phone Number: {user.phoneNumber}</p>
+                {user.subscriptions.length > 0 ? (
+                  <>
+                    <p>Subscriptions:</p>
+                    <ul className="no-bullets">
+                      {user.subscriptions.map((subscription) => (
+                        <li key={subscription.id}>
+                          Vehicle: {subscription.vehicle}, Status: {subscription.status}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <p>Subscriptions:</p>
+                    <p>User does not have any subscriptions.</p>
+                  </>
+                )}
+                {user.purchaseHistory.length > 0 ? (
+                  <>
+                    <p>Purchase History:</p>
+                    <ul className="no-bullets">
+                      {user.purchaseHistory.map((purchase) => (
+                        <li key={purchase.id}>
+                          Date: {purchase.date}, Amount: {purchase.amount}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <>
+                    <p>Purchase History:</p>
+                    <p>User has not made any purchases.</p>
+                  </>
+                )}
                 <div className="user-buttons">
                   <button onClick={() => setEditAccountModalOpen(true)}>Edit Account</button>
                   <button onClick={handleManageSubscriptions}>Manage Subscriptions</button>
                 </div>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <h3>{user.name}</h3>
                 <p>Email: {user.email}</p>
                 <p>Phone Number: {user.phoneNumber}</p>
-              </>
+              </div>
             )}
           </div>
         ))}
@@ -148,6 +152,7 @@ const UserList = () => {
       )}
     </div>
   );
+
 };
 
 export default UserList;

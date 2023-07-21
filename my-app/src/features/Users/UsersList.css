@@ -22,13 +22,10 @@
     margin: 10px;
     padding: 20px;
     border-radius: 8px;
-    background-color: white; /* Set the background color for the cards */
-    color: black; /* Set the text color */
-    border: 2px solid black; /* Add black border to the cards */
+    background-color: white;
+    color: black;
+    border: 2px solid black;
     cursor: pointer;
-    /* max-height: 15vh; */
-    overflow: hidden; /* Hide any overflow content */
-    transition: max-height 0.3s ease; /* Add transition effect */
   }
 
   /* Styling for the user details within the card */
@@ -39,16 +36,7 @@
     padding-bottom: 5px;
   }
 
-  /* Add hover effect */
-  .user-card:hover {
-    background-color: black;
-    color: white;
-    border: 2px solid #c65e31;
-    /* max-height: 30vh; Expand the card on hover */
-  }
-
   /* Additional Styles */
-
   .user-buttons {
     display: flex;
     justify-content: space-between;
@@ -62,11 +50,8 @@
   }
 
   .user-details {
-    /* max-height: 150px; Remove the fixed max-height for dynamic expansion */
     list-style: none;
     padding-left: 0;
-    overflow: hidden; /* Hide any overflow content */
-    transition: max-height 0.3s ease; /* Add transition effect for dynamic expansion */
   }
 
   /* Styling for the subscriptions and purchase history lists */
