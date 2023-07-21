@@ -14,14 +14,14 @@
     "redux-logger": "^3.0.6",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://github.com/glwo/CSR-Front-End/my-app",
+  "homepage": "https://glwo.github.io/CSR-Front-End/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --baseName=/my-app"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
