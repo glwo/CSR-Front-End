@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import EditAccountModal from '../EditAccount/EditAccountModal'; // Modal component for editing account
-import VehicleSubscriptionsModal from '../VehicleSubscriptions/VehicleSubscriptionsModal'; // Modal component for managing subscriptions
-import { selectUser, updateUser } from './usersSlice';
-import './UsersList.css'; // Import the CSS file
+import React, { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import EditAccountModal from "../EditAccount/EditAccountModal"; // Modal component for editing account
+import VehicleSubscriptionsModal from "../VehicleSubscriptions/VehicleSubscriptionsModal"; // Modal component for managing subscriptions
+import { selectUser, updateUser } from "./usersSlice";
+import "./UsersList.css"; // Import the CSS file
 
 const UserList = () => {
   const users = useSelector((state) => state.users.users);
@@ -11,21 +11,25 @@ const UserList = () => {
   const dispatch = useDispatch();
 
   const [editAccountModalOpen, setEditAccountModalOpen] = useState(false);
-  const [vehicleSubscriptionsModalOpen, setVehicleSubscriptionsModalOpen] = useState(false);
+  const [vehicleSubscriptionsModalOpen, setVehicleSubscriptionsModalOpen] =
+    useState(false);
   const [expandedCard, setExpandedCard] = useState(null); // State to manage expanded cards
-  const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
+  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const cardRef = useRef(null); // Reference to the card element
 
   const handleUserClick = (user, event) => {
     // Check if the click target is a button inside the card
-    const isButtonClicked = event.target.tagName === 'BUTTON' || event.target.closest('button');
+    const isButtonClicked =
+      event.target.tagName === "BUTTON" || event.target.closest("button");
 
     // If the clicked card is already expanded and a button is clicked, don't collapse the card
     // Otherwise, select the user and expand/collapse the card
     if (expandedCard === user.id && isButtonClicked) {
       return;
     } else {
-      setExpandedCard((prevExpandedCard) => (prevExpandedCard === user.id ? null : user.id));
+      setExpandedCard((prevExpandedCard) =>
+        prevExpandedCard === user.id ? null : user.id
+      );
       if (selectedUser?.id === user.id) {
         dispatch(selectUser(null));
       } else {
@@ -76,26 +80,32 @@ const UserList = () => {
   return (
     <div>
       <div className="search-container">
-  <input
-    type="text"
-    placeholder="Search AMP Users..."
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-  />
-  <div className="search-icon">
-    <i className="fa-solid fa-magnifying-glass"></i>
-  </div>
-</div>
+        <input
+          type="text"
+          placeholder="Search AMP Users..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <div className="search-icon">
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
       <div className="user-list-container">
-        {filteredUsers.map((user) => (
+        {filteredUsers.length === 0 ? ( // Check if filteredUsers is empty
+          <p>There are no registered users with that name.</p>
+        ) : (
+          filteredUsers.map((user) => (
           <div
             key={user.id}
             ref={user.id === expandedCard ? cardRef : null} // Set the ref to the card element when expanded
-            className={`user-card ${selectedUser?.id === user.id ? 'selected' : ''} ${
-              expandedCard === user.id ? 'expanded' : ''
-            }`}
+            className={`user-card ${
+              selectedUser?.id === user.id ? "selected" : ""
+            } ${expandedCard === user.id ? "expanded" : ""}`}
             onClick={(event) => handleUserClick(user, event)} // Pass the event object to the function
-            style={{ height: expandedCard === user.id ? calculateCardHeight(user) : '15vh' }}
+            style={{
+              height:
+                expandedCard === user.id ? calculateCardHeight(user) : "15vh",
+            }}
           >
             {selectedUser?.id === user.id ? (
               <div className="user-details">
@@ -108,7 +118,8 @@ const UserList = () => {
                     <ul className="no-bullets">
                       {user.subscriptions.map((subscription) => (
                         <li key={subscription.id}>
-                          Vehicle: {subscription.vehicle}, Status: {subscription.status}
+                          Vehicle: {subscription.vehicle}, Status:{" "}
+                          {subscription.status}
                         </li>
                       ))}
                     </ul>
@@ -137,8 +148,12 @@ const UserList = () => {
                   </>
                 )}
                 <div className="user-buttons">
-                  <button onClick={() => setEditAccountModalOpen(true)}>Edit Account</button>
-                  <button onClick={handleManageSubscriptions}>Manage Subscriptions</button>
+                  <button onClick={() => setEditAccountModalOpen(true)}>
+                    Edit Account
+                  </button>
+                  <button onClick={handleManageSubscriptions}>
+                    Manage Subscriptions
+                  </button>
                 </div>
               </div>
             ) : (
@@ -149,12 +164,17 @@ const UserList = () => {
               </div>
             )}
           </div>
-        ))}
+         ))
+         )}
       </div>
 
       {/* Edit Account Modal */}
       {editAccountModalOpen && (
-        <EditAccountModal user={selectedUser} onSave={handleSaveAccount} onClose={() => setEditAccountModalOpen(false)} />
+        <EditAccountModal
+          user={selectedUser}
+          onSave={handleSaveAccount}
+          onClose={() => setEditAccountModalOpen(false)}
+        />
       )}
 
       {/* Vehicle Subscriptions Modal */}
@@ -168,7 +188,6 @@ const UserList = () => {
       )}
     </div>
   );
-
 };
 
 export default UserList;
