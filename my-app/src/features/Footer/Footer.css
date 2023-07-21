@@ -22,3 +22,7 @@
     color: white;
     text-decoration: none;
   }
+
+  .footer-container a:hover{
+    text-decoration: underline;
+  }
