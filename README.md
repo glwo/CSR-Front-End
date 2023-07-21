@@ -43,7 +43,7 @@ The AMP CSR Portal is built using the following technologies:
 npm start
 # or
 yarn start
-
+```
 ## Usage
 
 Upon accessing the AMP CSR Portal, the CSR representatives will be presented with a list of registered users.
@@ -52,4 +52,3 @@ Upon accessing the AMP CSR Portal, the CSR representatives will be presented wit
 - To edit a user's account information, click the "Edit Account" button within the expanded card and make the necessary changes in the modal.
 - To manage a user's subscriptions, click the "Manage Subscriptions" button within the expanded card, which opens a modal to add or remove subscriptions.
 - Utilize the search bar to quickly find specific users by their names.
-
