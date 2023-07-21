@@ -13,6 +13,7 @@ const UserList = () => {
   const [editAccountModalOpen, setEditAccountModalOpen] = useState(false);
   const [vehicleSubscriptionsModalOpen, setVehicleSubscriptionsModalOpen] = useState(false);
   const [expandedCard, setExpandedCard] = useState(null); // State to manage expanded cards
+  const [searchQuery, setSearchQuery] = useState(''); // State to store the search query
   const cardRef = useRef(null); // Reference to the card element
 
   const handleUserClick = (user, event) => {
@@ -67,11 +68,26 @@ const UserList = () => {
     return baseHeight + subscriptionsHeight + purchasesHeight;
   };
 
+  // Filter the users based on the search query
+  const filteredUsers = users.filter((user) =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
-      <h2 className="usersH2">Registered Users</h2>
+      <div className="search-container">
+  <input
+    type="text"
+    placeholder="Search AMP Users..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+  <div className="search-icon">
+    <i className="fa-solid fa-magnifying-glass"></i>
+  </div>
+</div>
       <div className="user-list-container">
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <div
             key={user.id}
             ref={user.id === expandedCard ? cardRef : null} // Set the ref to the card element when expanded
