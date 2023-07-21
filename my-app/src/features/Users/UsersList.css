@@ -45,8 +45,20 @@
 
   /* Adjust modal buttons */
   .user-buttons button {
-    padding: 10px 20px;
-    text-align: center;
+    background-color: white; /* Blue background color for the buttons */
+    color: #c65e31; /* Text color for the buttons */
+    padding: 8px 16px; /* Padding for the buttons */
+    border: none;
+    box-shadow: 0 0 2px 1px #000;
+    border-radius: 15px; /* Rounded corners for the buttons */
+    margin-right: 10px; /* Add some margin between the buttons */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+
+  .user-buttons button:hover {
+    background-color: #14619a; /* Darker blue color on hover */
+    color: white;
   }
 
   .user-details {
