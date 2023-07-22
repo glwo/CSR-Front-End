@@ -94,7 +94,7 @@ const UserList = () => {
       </div>
       <div className="user-list-container">
         {filteredUsers.length === 0 ? ( // Check if filteredUsers is empty
-          <p>There are no registered users with that name.</p>
+          <p>There are no registered users that match the search credentials.</p>
         ) : (
           filteredUsers.map((user) => (
           <div
