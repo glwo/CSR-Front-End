@@ -8,25 +8,54 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 9999; /* Add a higher z-index value to the modal overlay */
   }
 
   .about-modal-content {
     background-color: white;
     border: 1px solid black;
     padding: 20px;
-    width: 400px;
+    width: 35vw;
+    max-width: 600px;
+    height: 60vh;
+    max-height: 80%;
+    overflow-y: auto;
+    border-radius: 8px;
   }
 
   .about-modal-content h2 {
     margin-top: 0;
   }
 
+  .about-modal-content h3 {
+    margin-top: 20px;
+  }
+
   .about-modal-content p {
     margin-bottom: 20px;
   }
 
-  .about-modal-content button {
-    display: block;
-    margin: 0 auto;
+  .about-modal-content ol {
+    padding-left: 20px;
   }
 
+  .about-modal-content li {
+    margin-bottom: 10px;
+  }
+
+  .about-modal-content button {
+    background-color: white;
+    color: #c65e31;
+    padding: 8px 16px;
+    border: none;
+    box-shadow: 0 0 2px 1px #000;
+    border-radius: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .about-modal-content button:hover {
+    background-color: #14619a;
+    color: white;
+  }
