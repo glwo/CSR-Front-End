@@ -11,6 +11,7 @@
 
 .options-button button {
   background-color: white;
+  cursor: pointer;
   color: #c65e31;
   padding: 8px 16px;
   border: solid #c65e31;

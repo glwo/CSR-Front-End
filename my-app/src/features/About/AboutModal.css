@@ -1,0 +1,32 @@
+.about-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-modal-content {
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    width: 400px;
+  }
+
+  .about-modal-content h2 {
+    margin-top: 0;
+  }
+
+  .about-modal-content p {
+    margin-bottom: 20px;
+  }
+
+  .about-modal-content button {
+    display: block;
+    margin: 0 auto;
+  }
+
