@@ -84,10 +84,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
 
         const updatedTargetUser = {
           ...targetUser,
-          subscriptions: [
-            ...targetUser.subscriptions,
-            selectedSubscription,
-          ],
+          subscriptions: [...targetUser.subscriptions, selectedSubscription],
         };
 
         dispatch(updateUser(updatedUser));
@@ -212,6 +209,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
 
         {selectedSubscription && (
           <>
+          <div className="editSubRow">
             <div>
               <h4>Subscription Details</h4>
               <p>
@@ -231,9 +229,9 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 {/* <button onClick={onClose}>Close</button> */}
               </div>
             </div>
-            <div>
+            <div className="transferSubDiv">
               <h4>Transfer Subscription</h4>
-              <p>Select a user or enter new vehicle details to transfer to:</p>
+              <p>Select a user to transfer to:</p>
               <select
                 value={selectedUserId || ""}
                 onChange={(e) => {
@@ -258,21 +256,22 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
               ) : null}
               {(!selectedUserId || (newMake && newModel && newPlate)) && (
                 <>
+                <p>Or transfer subscription to new vehicle:</p>
                   <input
                     type="text"
-                    placeholder="New Make (optional)"
+                    placeholder="New Make"
                     value={newMake}
                     onChange={(e) => setNewMake(e.target.value)}
                   />
                   <input
                     type="text"
-                    placeholder="New Model (optional)"
+                    placeholder="New Model"
                     value={newModel}
                     onChange={(e) => setNewModel(e.target.value)}
                   />
                   <input
                     type="text"
-                    placeholder="New License Plate (optional)"
+                    placeholder="New License Plate"
                     value={newPlate}
                     onChange={(e) => setNewPlate(e.target.value)}
                   />
@@ -289,10 +288,12 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                     </select>
                   </label>
                   <button onClick={handleTransferSubscription}>
-                  Transfer Subscription
-                </button>
+                    Transfer Subscription
+                  </button>
+
                 </>
               )}
+            </div>
             </div>
           </>
         )}
