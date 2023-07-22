@@ -256,7 +256,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
               ) : null}
               {(!selectedUserId || (newMake && newModel && newPlate)) && (
                 <>
-                <p>Or transfer subscription to new vehicle:</p>
+                <p>Or transfer to a new vehicle:</p>
                   <input
                     type="text"
                     placeholder="New Make"

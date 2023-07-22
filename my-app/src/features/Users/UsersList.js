@@ -74,7 +74,9 @@ const UserList = () => {
 
   // Filter the users based on the search query
   const filteredUsers = users.filter((user) =>
-    user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  user.phoneNumber.includes(searchQuery)
   );
 
   return (
