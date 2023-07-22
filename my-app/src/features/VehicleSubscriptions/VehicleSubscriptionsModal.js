@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateUser } from '../Users/usersSlice';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../Users/usersSlice";
 
-import './VehicleSubscriptionsModal.css';
+import "./VehicleSubscriptionsModal.css";
 
 const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   const [selectedSubscription, setSelectedSubscription] = useState(null);
-  const [newVehicle, setNewVehicle] = useState('');
-  const [newStatus, setNewStatus] = useState('');
+  const [newMake, setNewMake] = useState("");
+  const [newModel, setNewModel] = useState("");
+  const [newPlate, setNewPlate] = useState("");
+  const [newStatus, setNewStatus] = useState("active");
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -15,6 +18,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
     // Update the local state whenever the user prop changes
     if (user) {
       setSelectedSubscription(null); // Reset selected subscription when the modal is opened
+      setSelectedUserId(null); // Clear selected user when the modal is opened
     }
   }, [user]);
 
@@ -23,11 +27,17 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   };
 
   const handleAddSubscription = () => {
-    if (newVehicle && newStatus) {
+    if (newMake && newModel && newPlate && newStatus) {
+      const defaultVehicle = {
+        make: newMake,
+        model: newModel,
+        licensePlate: newPlate,
+        status: newStatus,
+      };
+
       const newSubscription = {
         id: Date.now(), // Generate a unique ID
-        vehicle: newVehicle,
-        status: newStatus,
+        vehicle: defaultVehicle,
       };
 
       const updatedUser = {
@@ -38,15 +48,19 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
       dispatch(updateUser(updatedUser));
 
       // Reset input fields
-      setNewVehicle('');
-      setNewStatus('');
+      setNewMake("");
+      setNewModel("");
+      setNewPlate("");
+      setNewStatus("active");
     }
   };
 
   const handleRemoveSubscription = (subscriptionId) => {
     const updatedUser = {
       ...user,
-      subscriptions: user.subscriptions.filter((subscription) => subscription.id !== subscriptionId),
+      subscriptions: user.subscriptions.filter(
+        (subscription) => subscription.id !== subscriptionId
+      ),
     };
 
     dispatch(updateUser(updatedUser));
@@ -55,22 +69,67 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
     setSelectedSubscription(null);
   };
 
-  const handleTransferSubscription = (newUser) => {
-    const updatedUser = {
-      ...user,
-      subscriptions: user.subscriptions.filter((subscription) => subscription.id !== selectedSubscription.id),
-    };
+  const handleTransferSubscription = () => {
+    if (selectedSubscription && selectedUserId) {
+      const targetUser = users.find((u) => u.id === Number(selectedUserId));
 
-    const updatedNewUser = {
-      ...newUser,
-      subscriptions: [...newUser.subscriptions, selectedSubscription],
-    };
+      if (targetUser) {
+        // If a user is selected, it's a user transfer
+        const updatedUser = {
+          ...user,
+          subscriptions: user.subscriptions.filter(
+            (subscription) => subscription.id !== selectedSubscription.id
+          ),
+        };
 
-    dispatch(updateUser(updatedUser));
-    dispatch(updateUser(updatedNewUser));
+        const updatedTargetUser = {
+          ...targetUser,
+          subscriptions: [
+            ...targetUser.subscriptions,
+            selectedSubscription,
+          ],
+        };
 
-    // Clear selected subscription
-    setSelectedSubscription(null);
+        dispatch(updateUser(updatedUser));
+        dispatch(updateUser(updatedTargetUser));
+
+        // Clear selected subscription and reset inputs
+        setSelectedSubscription(null);
+        setNewMake("");
+        setNewModel("");
+        setNewPlate("");
+        setNewStatus("active");
+        setSelectedUserId(null);
+      }
+    } else if (selectedSubscription && (newMake || newModel || newPlate)) {
+      // If a new vehicle is provided, it's a vehicle transfer
+      const updatedUser = {
+        ...user,
+        subscriptions: user.subscriptions.map((subscription) =>
+          subscription.id === selectedSubscription.id
+            ? {
+                ...subscription,
+                vehicle: {
+                  make: newMake || subscription.vehicle.make,
+                  model: newModel || subscription.vehicle.model,
+                  licensePlate: newPlate || subscription.vehicle.licensePlate,
+                  status: newStatus || subscription.vehicle.status,
+                },
+              }
+            : subscription
+        ),
+      };
+
+      dispatch(updateUser(updatedUser));
+
+      // Clear selected subscription and reset inputs
+      setSelectedSubscription(null);
+      setNewMake("");
+      setNewModel("");
+      setNewPlate("");
+      setNewStatus("active");
+      setSelectedUserId(null);
+    }
   };
 
   if (!user) {
@@ -80,41 +139,73 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <h3>Vehicle Subscriptions</h3>
-        <ul>
-          {user.subscriptions.map((subscription) => (
-            <li
-              key={subscription.id}
-              onClick={() => handleSubscriptionClick(subscription)}
-              className={selectedSubscription === subscription ? 'selected' : ''}
-            >
-              {subscription.vehicle} - {subscription.status}
-            </li>
-          ))}
-        </ul>
+        {user.subscriptions.length > 0 ? (
+          <>
+            <h3>Edit a Subscription</h3>
+            <ul>
+              {user.subscriptions.map((subscription) => (
+                <li
+                  key={subscription.id}
+                  onClick={() => handleSubscriptionClick(subscription)}
+                  className={
+                    selectedSubscription === subscription ? "selected" : ""
+                  }
+                >
+                  {subscription.vehicle.make} {subscription.vehicle.model}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
         {selectedSubscription === null && (
           <div>
-            <h4>Add Subscription</h4>
-            <label> Vehicle:
-            <input
-              type="text"
-              placeholder="Vehicle"
-              value={newVehicle}
-              onChange={(e) => setNewVehicle(e.target.value)}
-            />
+            <h3>Add a Subscription</h3>
+            <label>
+              {" "}
+              Make:
+              <input
+                type="text"
+                placeholder="Make"
+                value={newMake}
+                onChange={(e) => setNewMake(e.target.value)}
+              />
             </label>
-            <label> Subsciption Status:
-            <input
-              type="text"
-              placeholder="Status"
-              value={newStatus}
-              onChange={(e) => setNewStatus(e.target.value)}
-            />
+            <label>
+              {" "}
+              Model:
+              <input
+                type="text"
+                placeholder="Model"
+                value={newModel}
+                onChange={(e) => setNewModel(e.target.value)}
+              />
+            </label>
+            <label>
+              {" "}
+              License Plate:
+              <input
+                type="text"
+                placeholder="License Plate"
+                value={newPlate}
+                onChange={(e) => setNewPlate(e.target.value)}
+              />
+            </label>
+            <label>
+              {" "}
+              Subscription Status:
+              <select
+                value={newStatus}
+                onChange={(e) => setNewStatus(e.target.value)}
+              >
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="overdue">Overdue</option>
+              </select>
             </label>
             <div className="modal-buttons">
               <button onClick={handleAddSubscription}>Add Subscription</button>
-              <button onClick={onClose}>Close</button>
+              {/* <button onClick={onClose}>Close</button> */}
             </div>
           </div>
         )}
@@ -122,25 +213,31 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
         {selectedSubscription && (
           <>
             <div>
-              <h4>Edit Subscription</h4>
-              <p>Vehicle: {selectedSubscription.vehicle}</p>
-              <p>Status: {selectedSubscription.status}</p>
+              <h4>Subscription Details</h4>
+              <p>
+                Vehicle: {selectedSubscription.vehicle.make}{" "}
+                {selectedSubscription.vehicle.model}
+              </p>
+              <p>Plate: {selectedSubscription.vehicle.licensePlate}</p>
+              <p>Status: {selectedSubscription.vehicle.status}</p>
               <div className="modal-buttons">
-              <button onClick={() => handleRemoveSubscription(selectedSubscription.id)}>
-                Remove Subscription
-              </button>
-              <button onClick={onClose}>Close</button>
-            </div>
+                <button
+                  onClick={() =>
+                    handleRemoveSubscription(selectedSubscription.id)
+                  }
+                >
+                  Remove Subscription
+                </button>
+                {/* <button onClick={onClose}>Close</button> */}
+              </div>
             </div>
             <div>
               <h4>Transfer Subscription</h4>
-              <p>Select a user to transfer the subscription:</p>
+              <p>Select a user or enter new vehicle details to transfer to:</p>
               <select
-                value=""
+                value={selectedUserId || ""}
                 onChange={(e) => {
-                  const selectedUserId = e.target.value;
-                  const newUser = users.find((user) => user.id === Number(selectedUserId));
-                  handleTransferSubscription(newUser);
+                  setSelectedUserId(e.target.value || null);
                 }}
               >
                 <option value="" disabled>
@@ -154,11 +251,52 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                     </option>
                   ))}
               </select>
+              {selectedUserId || (newMake && newModel && newPlate) ? (
+                <button onClick={handleTransferSubscription}>
+                  Transfer Subscription
+                </button>
+              ) : null}
+              {(!selectedUserId || (newMake && newModel && newPlate)) && (
+                <>
+                  <input
+                    type="text"
+                    placeholder="New Make (optional)"
+                    value={newMake}
+                    onChange={(e) => setNewMake(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="New Model (optional)"
+                    value={newModel}
+                    onChange={(e) => setNewModel(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    placeholder="New License Plate (optional)"
+                    value={newPlate}
+                    onChange={(e) => setNewPlate(e.target.value)}
+                  />
+                  <label>
+                    {" "}
+                    New Subscription Status:
+                    <select
+                      value={newStatus}
+                      onChange={(e) => setNewStatus(e.target.value)}
+                    >
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                      <option value="overdue">Overdue</option>
+                    </select>
+                  </label>
+                  <button onClick={handleTransferSubscription}>
+                  Transfer Subscription
+                </button>
+                </>
+              )}
             </div>
           </>
         )}
-
-        {/* <button onClick={onClose}>Close</button> */}
+        <button onClick={onClose}>Close</button>
       </div>
     </div>
   );

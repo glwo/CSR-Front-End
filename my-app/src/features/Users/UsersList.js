@@ -54,7 +54,7 @@ const UserList = () => {
 
   // Helper function to calculate the total height of subscriptions section
   const calculateSubscriptionsHeight = (user) => {
-    const singleSubscriptionHeight = 25; // Height of each individual subscription item in pixels
+    const singleSubscriptionHeight = 42; // Height of each individual subscription item in pixels
     return (user.subscriptions.length || 1) * singleSubscriptionHeight;
   };
 
@@ -66,7 +66,7 @@ const UserList = () => {
 
   // Calculate the total height needed for the card based on subscriptions and purchases
   const calculateCardHeight = (user) => {
-    const baseHeight = 190; // Height of the card without subscriptions and purchases in pixels
+    const baseHeight = 180; // Height of the card without subscriptions and purchases in pixels
     const subscriptionsHeight = calculateSubscriptionsHeight(user);
     const purchasesHeight = calculatePurchasesHeight(user);
     return baseHeight + subscriptionsHeight + purchasesHeight;
@@ -118,9 +118,8 @@ const UserList = () => {
                     <ul className="no-bullets">
                       {user.subscriptions.map((subscription) => (
                         <li key={subscription.id}>
-                          Vehicle: {subscription.vehicle}, Status:{" "}
-                          {subscription.status}
-                        </li>
+                        Vehicle: {subscription.vehicle.make} {subscription.vehicle.model}, Status: {subscription.vehicle.status}
+                      </li>
                       ))}
                     </ul>
                   </>

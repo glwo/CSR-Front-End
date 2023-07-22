@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <h1 className="title">Customer Service Portal</h1>
       <div className="options-button">
-        <button>Options</button>
+        <button>About</button>
       </div>
     </header>
   );

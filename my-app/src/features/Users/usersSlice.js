@@ -10,8 +10,12 @@ const initialState = {
       subscriptions: [
         {
           id: 1,
-          vehicle: 'Car A',
-          status: 'active',
+          vehicle: {
+            make: 'Toyota',
+            model: 'Corolla',
+            licensePlate: 'ABC123',
+            status: 'active',
+          },
         },
         // Other subscriptions...
       ],
@@ -33,8 +37,12 @@ const initialState = {
       subscriptions: [
         {
           id: 2,
-          vehicle: 'Car B',
-          status: 'active',
+          vehicle: {
+            make: 'Honda',
+            model: 'Civic',
+            licensePlate: 'XYZ789',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -45,6 +53,7 @@ const initialState = {
         },
       ],
     },
+    // Additional users with refactored data...
     {
       id: 3,
       name: 'Alice Johnson',
@@ -61,8 +70,12 @@ const initialState = {
       subscriptions: [
         {
           id: 3,
-          vehicle: 'Truck A',
-          status: 'active',
+          vehicle: {
+            make: 'Ford',
+            model: 'F-150',
+            licensePlate: 'DEF456',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [],
@@ -75,8 +88,12 @@ const initialState = {
       subscriptions: [
         {
           id: 4,
-          vehicle: 'Motorcycle A',
-          status: 'active',
+          vehicle: {
+            make: 'Harley-Davidson',
+            model: 'Softail',
+            licensePlate: 'GHI789',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -87,7 +104,6 @@ const initialState = {
         },
       ],
     },
-    // Additional 15 users...
     {
       id: 6,
       name: 'Michael Johnson',
@@ -96,8 +112,12 @@ const initialState = {
       subscriptions: [
         {
           id: 5,
-          vehicle: 'Car C',
-          status: 'active',
+          vehicle: {
+            make: 'Chevrolet',
+            model: 'Malibu',
+            licensePlate: 'JKL012',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -130,8 +150,12 @@ const initialState = {
       subscriptions: [
         {
           id: 6,
-          vehicle: 'Truck B',
-          status: 'active',
+          vehicle: {
+            make: 'GMC',
+            model: 'Sierra',
+            licensePlate: 'MNO345',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [],
@@ -160,8 +184,12 @@ const initialState = {
       subscriptions: [
         {
           id: 7,
-          vehicle: 'Car D',
-          status: 'active',
+          vehicle: {
+            make: 'Nissan',
+            model: 'Altima',
+            licensePlate: 'PQR678',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [],
@@ -174,8 +202,12 @@ const initialState = {
       subscriptions: [
         {
           id: 8,
-          vehicle: 'Motorcycle B',
-          status: 'active',
+          vehicle: {
+            make: 'Harley-Davidson',
+            model: 'Sportster',
+            licensePlate: 'STU901',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -202,8 +234,12 @@ const initialState = {
       subscriptions: [
         {
           id: 9,
-          vehicle: 'Car E',
-          status: 'active',
+          vehicle: {
+            make: 'Ford',
+            model: 'Mustang',
+            licensePlate: 'VWX234',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -230,8 +266,12 @@ const initialState = {
       subscriptions: [
         {
           id: 10,
-          vehicle: 'Truck C',
-          status: 'active',
+          vehicle: {
+            make: 'Chevrolet',
+            model: 'Equinox',
+            licensePlate: 'YZA345',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [
@@ -258,8 +298,12 @@ const initialState = {
       subscriptions: [
         {
           id: 11,
-          vehicle: 'Car F',
-          status: 'active',
+          vehicle: {
+            make: 'Toyota',
+            model: 'Camry',
+            licensePlate: 'BZA678',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [],
@@ -272,8 +316,21 @@ const initialState = {
       subscriptions: [
         {
           id: 12,
-          vehicle: 'Motorcycle C',
-          status: 'active',
+          vehicle: {
+            make: 'Harley-Davidson',
+            model: 'Road King',
+            licensePlate: 'CZA789',
+            status: 'active',
+          },
+        },
+        {
+          id: 13,
+          vehicle: {
+            make: 'Harley-Davidson',
+            model: 'Road King',
+            licensePlate: 'CZA789',
+            status: 'active',
+          },
         },
       ],
       purchaseHistory: [],
