@@ -56,6 +56,13 @@
   color: white; /* Text color on hover */
 }
 
+.error-list ul{
+  color: red;
+}
+
+.error {
+  color: red;
+}
 
 
 /* Add any other necessary styles for the modal here */

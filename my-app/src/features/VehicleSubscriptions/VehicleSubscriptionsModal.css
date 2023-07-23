@@ -96,9 +96,9 @@
     margin-bottom: 10px;
   }
 
-  /* .modal-buttons button {
-    margin-bottom: 10px;
-  } */
+  .modal-buttons button {
+    margin-bottom: 15px;
+  }
 
   .transferSubDiv{
     display: flex;

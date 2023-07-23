@@ -11,6 +11,9 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
   const [newPlate, setNewPlate] = useState("");
   const [newStatus, setNewStatus] = useState("active");
   const [selectedUserId, setSelectedUserId] = useState(null);
+  const [makeError, setMakeError] = useState("");
+  const [modelError, setModelError] = useState("");
+  const [plateError, setPlateError] = useState("");
 
   const dispatch = useDispatch();
 
@@ -22,36 +25,66 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
     }
   }, [user]);
 
+  const validateInputs = () => {
+    let isValid = true;
+    setMakeError("");
+    setModelError("");
+    setPlateError("");
+
+    // Validate make
+    if (newMake.length > 30) {
+      setMakeError("Make should not exceed 30 characters.");
+      isValid = false;
+    }
+
+    // Validate model
+    if (newModel.length > 30) {
+      setModelError("Model should not exceed 30 characters.");
+      isValid = false;
+    }
+
+    // Validate plate
+    const plateRegex = /^[A-Za-z0-9]{6,8}$/;
+    if (!newPlate.match(plateRegex)) {
+      setPlateError("Invalid plate format. Plate should be 6, 7, or 8 characters alphanumeric.");
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
   const handleSubscriptionClick = (subscription) => {
     setSelectedSubscription(subscription);
   };
 
   const handleAddSubscription = () => {
     if (newMake && newModel && newPlate && newStatus) {
-      const defaultVehicle = {
-        make: newMake,
-        model: newModel,
-        licensePlate: newPlate,
-        status: newStatus,
-      };
+      if (validateInputs()) {
+        const defaultVehicle = {
+          make: newMake,
+          model: newModel,
+          licensePlate: newPlate,
+          status: newStatus,
+        };
 
-      const newSubscription = {
-        id: Date.now(), // Generate a unique ID
-        vehicle: defaultVehicle,
-      };
+        const newSubscription = {
+          id: Date.now(), // Generate a unique ID
+          vehicle: defaultVehicle,
+        };
 
-      const updatedUser = {
-        ...user,
-        subscriptions: [...user.subscriptions, newSubscription],
-      };
+        const updatedUser = {
+          ...user,
+          subscriptions: [...user.subscriptions, newSubscription],
+        };
 
-      dispatch(updateUser(updatedUser));
+        dispatch(updateUser(updatedUser));
 
-      // Reset input fields
-      setNewMake("");
-      setNewModel("");
-      setNewPlate("");
-      setNewStatus("active");
+        // Reset input fields
+        setNewMake("");
+        setNewModel("");
+        setNewPlate("");
+        setNewStatus("active");
+      }
     }
   };
 
@@ -99,33 +132,35 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
         setSelectedUserId(null);
       }
     } else if (selectedSubscription && (newMake || newModel || newPlate)) {
-      // If a new vehicle is provided, it's a vehicle transfer
-      const updatedUser = {
-        ...user,
-        subscriptions: user.subscriptions.map((subscription) =>
-          subscription.id === selectedSubscription.id
-            ? {
-                ...subscription,
-                vehicle: {
-                  make: newMake || subscription.vehicle.make,
-                  model: newModel || subscription.vehicle.model,
-                  licensePlate: newPlate || subscription.vehicle.licensePlate,
-                  status: newStatus || subscription.vehicle.status,
-                },
-              }
-            : subscription
-        ),
-      };
+      if (validateInputs()) {
+        // If a new vehicle is provided, it's a vehicle transfer
+        const updatedUser = {
+          ...user,
+          subscriptions: user.subscriptions.map((subscription) =>
+            subscription.id === selectedSubscription.id
+              ? {
+                  ...subscription,
+                  vehicle: {
+                    make: newMake || subscription.vehicle.make,
+                    model: newModel || subscription.vehicle.model,
+                    licensePlate: newPlate || subscription.vehicle.licensePlate,
+                    status: newStatus || subscription.vehicle.status,
+                  },
+                }
+              : subscription
+          ),
+        };
 
-      dispatch(updateUser(updatedUser));
+        dispatch(updateUser(updatedUser));
 
-      // Clear selected subscription and reset inputs
-      setSelectedSubscription(null);
-      setNewMake("");
-      setNewModel("");
-      setNewPlate("");
-      setNewStatus("active");
-      setSelectedUserId(null);
+        // Clear selected subscription and reset inputs
+        setSelectedSubscription(null);
+        setNewMake("");
+        setNewModel("");
+        setNewPlate("");
+        setNewStatus("active");
+        setSelectedUserId(null);
+      }
     }
   };
 
@@ -158,6 +193,9 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
         {selectedSubscription === null && (
           <div>
             <h3>Add a Subscription</h3>
+            {makeError && <div className="error">{makeError}</div>}
+            {modelError && <div className="error">{modelError}</div>}
+            {plateError && <div className="error">{plateError}</div>}
             <label>
               {" "}
               Make:
@@ -168,6 +206,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewMake(e.target.value)}
               />
             </label>
+            {/* {makeError && <div className="error">{makeError}</div>} */}
             <label>
               {" "}
               Model:
@@ -178,6 +217,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewModel(e.target.value)}
               />
             </label>
+            {/* {modelError && <div className="error">{modelError}</div>} */}
             <label>
               {" "}
               License Plate:
@@ -188,6 +228,7 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewPlate(e.target.value)}
               />
             </label>
+            {/* {plateError && <div className="error">{plateError}</div>} */}
             <label>
               {" "}
               Subscription Status:
@@ -249,32 +290,38 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                     </option>
                   ))}
               </select>
-              {selectedUserId || (newMake && newModel && newPlate) ? (
+              {/* {selectedUserId || (newMake && newModel && newPlate) ? (
                 <button onClick={handleTransferSubscription}>
                   Transfer Subscription
                 </button>
-              ) : null}
+              ) : null} */}
               {(!selectedUserId || (newMake && newModel && newPlate)) && (
                 <>
                 <p>Or transfer to a new vehicle:</p>
+                {makeError && <div className="error">{makeError}</div>}
+                {modelError && <div className="error">{modelError}</div>}
+                {plateError && <div className="error">{plateError}</div>}
                   <input
                     type="text"
                     placeholder="New Make"
                     value={newMake}
                     onChange={(e) => setNewMake(e.target.value)}
                   />
+                  {/* {makeError && <div className="error">{makeError}</div>} */}
                   <input
                     type="text"
                     placeholder="New Model"
                     value={newModel}
                     onChange={(e) => setNewModel(e.target.value)}
                   />
+                  {/* {modelError && <div className="error">{modelError}</div>} */}
                   <input
                     type="text"
                     placeholder="New License Plate"
                     value={newPlate}
                     onChange={(e) => setNewPlate(e.target.value)}
                   />
+                  {/* {plateError && <div className="error">{plateError}</div>} */}
                   <label>
                     {" "}
                     New Subscription Status:
@@ -287,12 +334,15 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                       <option value="overdue">Overdue</option>
                     </select>
                   </label>
-                  <button onClick={handleTransferSubscription}>
+                  {/* <button onClick={handleTransferSubscription}>
                     Transfer Subscription
-                  </button>
+                  </button> */}
 
                 </>
               )}
+              <button onClick={handleTransferSubscription}>
+                    Transfer Subscription
+                  </button>
             </div>
             </div>
           </>

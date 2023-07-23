@@ -5,7 +5,7 @@ const initialState = {
     {
       id: 1,
       name: 'John Doe',
-      email: 'johndoe@example.com',
+      email: 'john.doe@gmail.com',
       phoneNumber: '123-456-7890',
       subscriptions: [
         {
@@ -32,7 +32,7 @@ const initialState = {
     {
       id: 2,
       name: 'Jane Smith',
-      email: 'janesmith@example.com',
+      email: 'jane.smith@hotmail.com',
       phoneNumber: '987-654-3210',
       subscriptions: [
         {
@@ -57,7 +57,7 @@ const initialState = {
     {
       id: 3,
       name: 'Alice Johnson',
-      email: 'alicejohnson@example.com',
+      email: 'alice.johnson123@gmail.com',
       phoneNumber: '555-123-4567',
       subscriptions: [],
       purchaseHistory: [],
@@ -65,7 +65,7 @@ const initialState = {
     {
       id: 4,
       name: 'Bob Anderson',
-      email: 'bobanderson@example.com',
+      email: 'bob.anderson@example.net',
       phoneNumber: '888-999-7777',
       subscriptions: [
         {
@@ -83,7 +83,7 @@ const initialState = {
     {
       id: 5,
       name: 'Emily Brown',
-      email: 'emilybrown@example.com',
+      email: 'emily.brown34@yahoo.com',
       phoneNumber: '222-333-4444',
       subscriptions: [
         {
@@ -107,8 +107,8 @@ const initialState = {
     {
       id: 6,
       name: 'Michael Johnson',
-      email: 'michaeljohnson@example.com',
-      phoneNumber: '111-222-3333',
+      email: 'michael.johnson1980@gmail.com',
+      phoneNumber: '555-111-2222',
       subscriptions: [
         {
           id: 5,
@@ -131,7 +131,7 @@ const initialState = {
     {
       id: 7,
       name: 'Sophia Lee',
-      email: 'sophialee@example.com',
+      email: 'sophia.lee_1995@yahoo.com',
       phoneNumber: '444-555-6666',
       subscriptions: [],
       purchaseHistory: [
@@ -145,7 +145,7 @@ const initialState = {
     {
       id: 8,
       name: 'William Davis',
-      email: 'williamdavis@example.com',
+      email: 'wdavis1987@hotmail.com',
       phoneNumber: '777-888-9999',
       subscriptions: [
         {
@@ -163,7 +163,7 @@ const initialState = {
     {
       id: 9,
       name: 'Olivia Martinez',
-      email: 'oliviamartinez@example.com',
+      email: 'olivia_martinez@example.net',
       phoneNumber: '111-222-3333',
       subscriptions: [],
       purchaseHistory: [],
@@ -171,7 +171,7 @@ const initialState = {
     {
       id: 10,
       name: 'James Taylor',
-      email: 'jamestaylor@example.com',
+      email: 'james.taylor1984@yahoo.com',
       phoneNumber: '444-555-6666',
       subscriptions: [],
       purchaseHistory: [],
@@ -179,7 +179,7 @@ const initialState = {
     {
       id: 11,
       name: 'Emma Clark',
-      email: 'emmaclark@example.com',
+      email: 'emma_clark82@gmail.com',
       phoneNumber: '777-888-9999',
       subscriptions: [
         {
@@ -197,7 +197,7 @@ const initialState = {
     {
       id: 12,
       name: 'Liam Lewis',
-      email: 'liamlewis@example.com',
+      email: 'liam.lewis79@hotmail.com',
       phoneNumber: '111-222-3333',
       subscriptions: [
         {
@@ -221,7 +221,7 @@ const initialState = {
     {
       id: 13,
       name: 'Ava Adams',
-      email: 'avaadams@example.com',
+      email: 'ava.adams2000@yahoo.com',
       phoneNumber: '444-555-6666',
       subscriptions: [],
       purchaseHistory: [],
@@ -229,7 +229,7 @@ const initialState = {
     {
       id: 14,
       name: 'Noah Wright',
-      email: 'noahwright@example.com',
+      email: 'noah_wright1989@gmail.com',
       phoneNumber: '777-888-9999',
       subscriptions: [
         {
@@ -253,7 +253,7 @@ const initialState = {
     {
       id: 15,
       name: 'Isabella Hill',
-      email: 'isabellahill@example.com',
+      email: 'isabella_hill1996@example.net',
       phoneNumber: '111-222-3333',
       subscriptions: [],
       purchaseHistory: [],
@@ -261,7 +261,7 @@ const initialState = {
     {
       id: 16,
       name: 'Mason Turner',
-      email: 'masonturner@example.com',
+      email: 'mason.turner45@gmail.com',
       phoneNumber: '444-555-6666',
       subscriptions: [
         {
@@ -285,7 +285,7 @@ const initialState = {
     {
       id: 17,
       name: 'Ella Hernandez',
-      email: 'ellahernandez@example.com',
+      email: 'ella.hernandez@yahoo.com',
       phoneNumber: '777-888-9999',
       subscriptions: [],
       purchaseHistory: [],
@@ -293,7 +293,7 @@ const initialState = {
     {
       id: 18,
       name: 'Elijah Moore',
-      email: 'elijahmoore@example.com',
+      email: 'elijah_moore1988@hotmail.com',
       phoneNumber: '111-222-3333',
       subscriptions: [
         {
@@ -311,20 +311,11 @@ const initialState = {
     {
       id: 19,
       name: 'Avery Parker',
-      email: 'averyparker@example.com',
+      email: 'aparker2023@example.net',
       phoneNumber: '444-555-6666',
       subscriptions: [
         {
           id: 12,
-          vehicle: {
-            make: 'Harley-Davidson',
-            model: 'Road King',
-            licensePlate: 'CZA789',
-            status: 'active',
-          },
-        },
-        {
-          id: 13,
           vehicle: {
             make: 'Harley-Davidson',
             model: 'Road King',
@@ -338,7 +329,7 @@ const initialState = {
     {
       id: 20,
       name: 'Mia Simmons',
-      email: 'miasimmons@example.com',
+      email: 'mia.simmons32@yahoo.com',
       phoneNumber: '777-888-9999',
       subscriptions: [],
       purchaseHistory: [
