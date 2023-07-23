@@ -44,9 +44,11 @@
   border: none;
   box-shadow: 0 0 2px 1px #000;
   border-radius: 15px; /* Rounded corners for the buttons */
-  margin-right: 10px; /* Add some margin between the buttons */
+  /* margin-right: 10px; Add some margin between the buttons */
   cursor: pointer; /* Add a pointer cursor on hover */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
+  width: 12.5vw;
+  margin-bottom: 5px;
 }
 
 .modal-content button:hover {
@@ -54,10 +56,6 @@
   color: white; /* Text color on hover */
 }
 
-.modal-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
 
 
 /* Add any other necessary styles for the modal here */

@@ -54,12 +54,12 @@ const EditAccountModal = ({ user, onSave, onClose }) => {
         </div>
         <div className="modal-buttons">
           <button onClick={handleSave}>Save</button>
-          <button onClick={onClose}>Cancel</button>
+          {/* <button onClick={onClose}>Cancel</button> */}
         </div>
+        <button onClick={onClose}>Cancel</button>
       </div>
     </div>
   );
 };
 
 export default EditAccountModal;
-

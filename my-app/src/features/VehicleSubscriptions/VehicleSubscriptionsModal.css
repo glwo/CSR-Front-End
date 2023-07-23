@@ -62,8 +62,10 @@
 
   .modal-buttons {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 20px; */
+    flex-direction: column;
   }
 
   /* Updated styles for the Subscription Details and Transfer Subscription sections */
@@ -94,9 +96,14 @@
     margin-bottom: 10px;
   }
 
+  /* .modal-buttons button {
+    margin-bottom: 10px;
+  } */
+
   .transferSubDiv{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   /* .modal-content button {
