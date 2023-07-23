@@ -58,6 +58,7 @@
     width: 20vw;
     align-self: center;
     margin-bottom: 15px;
+    margin-top: 10px;
   }
 
   .modal-buttons {
@@ -105,6 +106,7 @@
     flex-direction: column;
     align-items: center;
   }
+
 
   /* .modal-content button {
     background-color: #c65e31;
