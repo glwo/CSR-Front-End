@@ -17,7 +17,9 @@ const Header = () => {
   return (
     <header className="ampHeader">
       <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo" />
+      <a href="/">
+  <img src={logo} alt="Logo" className="logo" />
+</a>
       </div>
       <h1 className="title">Customer Service Portal</h1>
       <div className="options-button">
