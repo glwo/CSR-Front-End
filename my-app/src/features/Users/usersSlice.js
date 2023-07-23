@@ -17,16 +17,13 @@ const initialState = {
             status: 'active',
           },
         },
-        // Other subscriptions...
       ],
       purchaseHistory: [
         {
           id: 1,
           date: '2023-07-01',
           amount: 10.99,
-          // Other purchase details...
         },
-        // Other purchase history...
       ],
     },
     {
@@ -53,7 +50,6 @@ const initialState = {
         },
       ],
     },
-    // Additional users with refactored data...
     {
       id: 3,
       name: 'Alice Johnson',

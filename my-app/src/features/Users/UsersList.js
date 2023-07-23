@@ -169,7 +169,6 @@ const UserList = () => {
          )}
       </div>
 
-      {/* Edit Account Modal */}
       {editAccountModalOpen && (
         <EditAccountModal
           user={selectedUser}
@@ -178,7 +177,6 @@ const UserList = () => {
         />
       )}
 
-      {/* Vehicle Subscriptions Modal */}
       {vehicleSubscriptionsModalOpen && (
         <VehicleSubscriptionsModal
           user={selectedUser}

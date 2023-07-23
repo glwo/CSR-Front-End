@@ -206,7 +206,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewMake(e.target.value)}
               />
             </label>
-            {/* {makeError && <div className="error">{makeError}</div>} */}
             <label>
               {" "}
               Model:
@@ -217,7 +216,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewModel(e.target.value)}
               />
             </label>
-            {/* {modelError && <div className="error">{modelError}</div>} */}
             <label>
               {" "}
               License Plate:
@@ -228,7 +226,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 onChange={(e) => setNewPlate(e.target.value)}
               />
             </label>
-            {/* {plateError && <div className="error">{plateError}</div>} */}
             <label>
               {" "}
               Subscription Status:
@@ -243,7 +240,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
             </label>
             <div className="modal-buttons">
               <button onClick={handleAddSubscription}>Add Subscription</button>
-              {/* <button onClick={onClose}>Close</button> */}
             </div>
           </div>
         )}
@@ -267,7 +263,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                 >
                   Remove Subscription
                 </button>
-                {/* <button onClick={onClose}>Close</button> */}
               </div>
             </div>
             <div className="transferSubDiv">
@@ -290,11 +285,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                     </option>
                   ))}
               </select>
-              {/* {selectedUserId || (newMake && newModel && newPlate) ? (
-                <button onClick={handleTransferSubscription}>
-                  Transfer Subscription
-                </button>
-              ) : null} */}
               {(!selectedUserId || (newMake && newModel && newPlate)) && (
                 <>
                 <p>Or transfer to a new vehicle:</p>
@@ -307,21 +297,18 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                     value={newMake}
                     onChange={(e) => setNewMake(e.target.value)}
                   />
-                  {/* {makeError && <div className="error">{makeError}</div>} */}
                   <input
                     type="text"
                     placeholder="New Model"
                     value={newModel}
                     onChange={(e) => setNewModel(e.target.value)}
                   />
-                  {/* {modelError && <div className="error">{modelError}</div>} */}
                   <input
                     type="text"
                     placeholder="New License Plate"
                     value={newPlate}
                     onChange={(e) => setNewPlate(e.target.value)}
                   />
-                  {/* {plateError && <div className="error">{plateError}</div>} */}
                   <label>
                     {" "}
                     New Subscription Status:
@@ -334,10 +321,6 @@ const VehicleSubscriptionsModal = ({ user, users, onClose }) => {
                       <option value="overdue">Overdue</option>
                     </select>
                   </label>
-                  {/* <button onClick={handleTransferSubscription}>
-                    Transfer Subscription
-                  </button> */}
-
                 </>
               )}
               <button onClick={handleTransferSubscription}>
