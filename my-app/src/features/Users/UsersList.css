@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #c65e31; /* Set the background color for the container */
+    background-color: #c65e31;
     min-height: 75vh;
   }
 
@@ -36,7 +36,6 @@
     padding-bottom: 5px;
   }
 
-  /* Additional Styles */
   .user-buttons {
     display: flex;
     justify-content: space-between;
@@ -45,19 +44,19 @@
 
   /* Adjust modal buttons */
   .user-buttons button {
-    background-color: white; /* Blue background color for the buttons */
-    color: #c65e31; /* Text color for the buttons */
-    padding: 8px 16px; /* Padding for the buttons */
+    background-color: white;
+    color: #c65e31;
+    padding: 8px 16px;
     border: none;
     box-shadow: 0 0 2px 1px #000;
-    border-radius: 15px; /* Rounded corners for the buttons */
-    margin-right: 10px; /* Add some margin between the buttons */
-    cursor: pointer; /* Add a pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    border-radius: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
   .user-buttons button:hover {
-    background-color: #14619a; /* Darker blue color on hover */
+    background-color: #14619a;
     color: white;
   }
 
@@ -88,7 +87,7 @@
   width: 25vw;
   padding: 12px;
   padding-left: 25px;
-  padding-right: 40px; /* Add padding for the search icon */
+  padding-right: 40px;
   border: 1px solid #ccc;
   border-radius: 25px;
   font-size: 16px;

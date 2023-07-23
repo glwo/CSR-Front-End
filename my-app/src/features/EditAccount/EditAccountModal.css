@@ -1,12 +1,10 @@
-/* Add this CSS to your project's existing CSS file or create a new CSS file and import it in your component */
-
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,9 +13,9 @@
 .modal-content {
   background-color: white;
   border: 1px solid black;
-  border-radius: 8px; /* Rounded edges for the modal */
-  padding: 30px; /* Increased padding for a bit bigger modal */
-  width: 15vw; /* Increased max-width for a bit bigger modal */
+  border-radius: 8px;
+  padding: 30px;
+  width: 15vw;
   height: 40vh;
 }
 
@@ -26,7 +24,7 @@
 }
 
 .modal-content div {
-  margin-bottom: 15px; /* Increased margin for better spacing */
+  margin-bottom: 15px;
 }
 
 .modal-content input {
@@ -34,26 +32,25 @@
   width: 100%;
   padding: 8px;
   margin-top: 8px;
-  box-sizing: border-box; /* Ensure the padding is included within the specified width */
+  box-sizing: border-box;
 }
 
 .modal-content button {
-  background-color: white; /* Blue background color for the buttons */
-  color: #c65e31; /* Text color for the buttons */
-  padding: 8px 16px; /* Padding for the buttons */
+  background-color: white;
+  color: #c65e31;
+  padding: 8px 16px;
   border: none;
   box-shadow: 0 0 2px 1px #000;
-  border-radius: 15px; /* Rounded corners for the buttons */
-  /* margin-right: 10px; Add some margin between the buttons */
-  cursor: pointer; /* Add a pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   width: 12.5vw;
   margin-bottom: 5px;
 }
 
 .modal-content button:hover {
-  background-color: #14619a; /* Darker blue color on hover */
-  color: white; /* Text color on hover */
+  background-color: #14619a;
+  color: white;
 }
 
 .error-list ul{
@@ -63,6 +60,3 @@
 .error {
   color: red;
 }
-
-
-/* Add any other necessary styles for the modal here */
