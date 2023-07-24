@@ -2,6 +2,9 @@
 
 The AMP CSR Portal is a web-based User Management System designed to efficiently manage and organize registered users for the AMP Customer Service Representatives. The application provides a user-friendly interface that allows CSR representatives to view, edit, and manage user accounts and subscriptions.
 
+![AMPCSR](https://github.com/glwo/CSR-Front-End/assets/112520930/4ce70aff-734b-4128-8710-c10f51b06973)
+
+
 ## Key Features
 
 - User Listing: The portal displays a list of registered users, showing their names, email addresses, and phone numbers.
