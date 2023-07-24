@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="ampHeader">
       <div className="logo-container">
-        <a href="/">
+        <a href="/CSR-Front-End/">
           <img src={logo} alt="Logo" className="logo" />
         </a>
       </div>
